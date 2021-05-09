@@ -177,6 +177,7 @@ const Suite = ({ visible, id, name, active = false, properties = {}, time, tests
           {
             Object.entries(tests)
               .filter(([key, test]) => test.visible)
+/*
               .sort((left, right) => {
                 let leftStatus = statusRank.indexOf(left[1].status)
                 let rightStatus = statusRank.indexOf(right[1].status)
@@ -197,6 +198,7 @@ const Suite = ({ visible, id, name, active = false, properties = {}, time, tests
 
                 return 0
               })
+*/
               .map(([key, test]) => <Test key={key} {...test} suite={id} dispatch={dispatch} />)
           }
         </div>

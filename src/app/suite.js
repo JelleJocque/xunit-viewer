@@ -9,14 +9,6 @@ const icons = {
   unknown: 'question'
 }
 
-const statusRank = [
-  'failure',
-  'error',
-  'passed',
-  'skipped',
-  'unknown'
-]
-
 const Properties = ({ properties, active = true, dispatch, suite, test = null }) => {
   return <div className={`properties card is-${active ? 'active' : 'inactive'}`}>
     <button className='card-header' onClick={() => { dispatch({ type: 'toggle-properties', payload: { suite, test, active: !active } }) }}>
@@ -177,28 +169,6 @@ const Suite = ({ visible, id, name, active = false, properties = {}, time, tests
           {
             Object.entries(tests)
               .filter(([key, test]) => test.visible)
-/*
-              .sort((left, right) => {
-                let leftStatus = statusRank.indexOf(left[1].status)
-                let rightStatus = statusRank.indexOf(right[1].status)
-
-                leftStatus = leftStatus === -1 ? statusRank.length : leftStatus
-                rightStatus = rightStatus === -1 ? statusRank.length : rightStatus
-
-                if (leftStatus < rightStatus) {
-                  return -2
-                }
-                if (leftStatus > rightStatus) return 2
-
-                const leftName = left[1].name
-                const rightName = right[1].name
-
-                if (leftName < rightName) return -1
-                if (leftName > rightName) return 1
-
-                return 0
-              })
-*/
               .map(([key, test]) => <Test key={key} {...test} suite={id} dispatch={dispatch} />)
           }
         </div>

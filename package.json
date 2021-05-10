@@ -3,11 +3,11 @@
   "version": "7.1.1",
   "description": "parses xunit xml into xunit viewer",
   "repository": {
-    "url": "https://github.com/lukejpreston/xunit-viewer.git",
+    "url": "https://github.com/JelleJocque/xunit-viewer.git",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/lukejpreston/xunit-viewer.git"
+    "url": "https://github.com/JelleJocque/xunit-viewer.git"
   },
   "homepage": "./",
   "keywords": [

@@ -171,7 +171,7 @@ const parse = async (xml) => {
     suites: {}
   }
   const result = await parseString(xml)
-  console.log(result)
+  console.log(JSON.stringify(result))
   if (result.testsuites) {
     const testsuites = result.testsuites.testsuite
     extract(output, testsuites)

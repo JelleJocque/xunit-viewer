@@ -1,6 +1,6 @@
 const xml2js = require('xml2js')
 
-const parser = new xml2js.Parser({ preserveChildrenOrder: true, explicitChildren: true, charAsChildren: true })
+const parser = new xml2js.Parser({ preserveChildrenOrder: true })
 
 const parseString = (xml) => new Promise((resolve, reject) => {
   parser.parseString(xml, (err, result) => {
@@ -87,12 +87,13 @@ const extractTestMessages = (test, messages) => {
 
 const extractTests = (output, suite, testcases) => {
   suite.tests = suite.tests || {}
-  testcases.forEach(testcase => {
+  testcases.forEach(function (testcase, i) {
     const meta = testcase.$ || {}
     const name = meta.name || 'No Name'
     const classname = meta.classname || meta.class || ''
     const time = meta.time || 0
-    const id = hashCode(name + classname)
+    // const id = hashCode(name + classname)
+    const id = i
 
     const test = suite.tests[id] || { id, name, messages: [], visible: true }
     test.time = time
@@ -171,7 +172,7 @@ const parse = async (xml) => {
     suites: {}
   }
   const result = await parseString(xml)
-  console.log(JSON.stringify(result))
+  // console.log(JSON.stringify(result))
   if (result.testsuites) {
     const testsuites = result.testsuites.testsuite
     extract(output, testsuites)

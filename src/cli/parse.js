@@ -1,7 +1,9 @@
 const xml2js = require('xml2js')
 
+const parser = new xml2js.Parser({ preserveChildrenOrder: true })
+
 const parseString = (xml) => new Promise((resolve, reject) => {
-  xml2js.parseString(xml, (err, result) => {
+  parser.parseString(xml, (err, result) => {
     if (err) reject(new Error(err))
     else resolve(result)
   })
